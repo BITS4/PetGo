@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+    <!-- Button to add a new pet -->
+    <div id="petAdd">
+        <div class="header">
+            <a href="/" class="logo">PetGo</a>
+            <form method="post" action="/search">
+                <input type="text" name="search" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>  
+        <button id="addPetButton" onclick="togglePetForm()">+ Add Pet</button>
+    
+        <!-- Form to input pet information -->
+        <!-- Form to input pet information -->
+        <div id="petForm" style="display: none;">
+            <form id="petFormContent">
+                <div class="form-row">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Name">
+                </div>
+                <div class="form-row">
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" name="type" placeholder="Type">
+                </div>
+                <div class="form-row">
+                    <label for="weight">Weight:</label>
+                    <input type="text" id="weight" name="weight" placeholder="Weight">
+                </div>
+                <div class="form-row">
+                    <label for="breed">Breed:</label>
+                    <input type="text" id="breed" name="breed" placeholder="Breed">
+                </div>
+                <div class="form-row">
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" name="gender" placeholder="Gender">
+                </div>
+                <button type="button" onclick="savePetInfo()">Save</button>
+            </form>
+        </div>
+            <button id="petContainer" onclick="togglePets()"> Pets &#9658; </button>   
+            <div id="petButtonsContainer"></div>
+    </div>
+    <%- include ('navigation') -%>
+    <!-- Container to display pet buttons and info -->
+    <!-- Script to handle displaying and saving pet information -->
+    <%- include ('functions') -%>
+    <%- include ('footer') -%>
+</body>
+</html>

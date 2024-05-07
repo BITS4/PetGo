@@ -1,0 +1,71 @@
+<script>
+    let petCounter = 1
+    function togglePetForm() {
+        const petForm = document.getElementById('petForm');
+        petForm.style.display = petForm.style.display ===   'none' ? 'block' : 'none';
+    }
+
+    function togglePets(){
+        var button = document.getElementById('petContainer'); 
+        var div = document.getElementById('petButtonsContainer');
+        
+        if (button.textContent === ' Pets \u25B6 ' && div.style.display === 'none') {
+            button.textContent = ' Pets \u25BC '; 
+            div.style.display = 'block';
+        } else {
+            button.textContent = ' Pets \u25B6 '; 
+            div.style.display = 'none';
+        }
+    }
+
+    function savePetInfo() {
+        const form = document.getElementById('petFormContent');
+        const formData = new FormData(form);
+        const petInfo = {};
+        for (let [key, value] of formData.entries()) {
+            petInfo[key] = value;
+        }
+        displayPetButton(petInfo); 
+        petCounter++; 
+        form.reset(); 
+    }
+    function displayPetButton(petInfo) {
+        const container = document.getElementById('petButtonsContainer');
+        const button = document.createElement('button');
+        button.textContent = `Pet ${petCounter} \u25B6`;
+        button.onclick = () => {
+            const existingPetInfoDiv = document.getElementById('petInfoDiv');
+            if (existingPetInfoDiv) {
+                // If the pet info div already exists, remove it
+                container.removeChild(existingPetInfoDiv);
+            } else {
+                // If the pet info div doesn't exist, create and append it
+                const petInfoDiv = document.createElement('div');
+                petInfoDiv.id = 'petInfoDiv';
+
+                // Loop through each key-value pair in the petInfo object
+                for (const [key, value] of Object.entries(petInfo)) {
+                    // Create a paragraph element for each key-value pair
+                    const petInfoPara = document.createElement('p');
+                    // Set the text content of the paragraph to key: value
+                    petInfoPara.textContent = `${key}: ${value}`;
+                    // Append the paragraph element to the petInfoDiv
+                    petInfoDiv.appendChild(petInfoPara);
+                }
+                
+                // Append the petInfoDiv to the container
+                container.appendChild(petInfoDiv);
+            }
+        };
+        container.appendChild(button);
+    }
+
+    function toggleCalendar() {
+        const calendars = document.getElementsByClassName('calendar');
+        for (const calendar of calendars) {
+            calendar.style.display = calendar.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+
+ 
+</script>

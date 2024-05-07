@@ -1,0 +1,18 @@
+{
+  "name": "petgo",
+  "version": "0.0.1",
+  "description": "Pet care application ",
+  "main": "index.js",
+  "scripts": {
+    "start": " node index.js"
+  },
+  "keywords": [
+    "Meow"
+  ],
+  "author": "Pirov Vazirdzhon",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}

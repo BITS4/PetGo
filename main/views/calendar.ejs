@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="/calendar.css">
+</head>
+<body>
+    <%- include ('functions') %>
+    <div class="calendar" style="display: none;">
+        <h1>Calendar</h1>
+        <div class="days">
+            <!-- Days of the week -->
+            <div class="day">Sunday</div>
+            <div class="day">Monday</div>
+            <div class="day">Tuesday</div>
+            <div class="day">Wednesday</div>
+            <div class="day">Thursday</div>
+            <div class="day">Friday</div>
+            <div class="day">Saturday</div>
+        </div>
+        <div class="plans">
+            <!-- Plans will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        // Dummy plans data (replace with actual data)
+        const plans = [
+            { day: 'Sunday', plan: 'Plan 1' },
+            { day: 'Monday', plan: 'Plan 2' },
+            { day: 'Tuesday', plan: 'Plan 3' },
+            { day: 'Wednesday', plan: 'Plan 4' },
+            { day: 'Thursday', plan: 'Plan 5' },
+            { day: 'Friday', plan: 'Plan 6' },
+            { day: 'Saturday', plan: 'Plan 7' }
+        ];
+
+        // Function to display plans when a day is clicked
+        document.querySelectorAll('.day').forEach((day, index) => {
+            day.addEventListener('click', () => {
+                // Clear existing plans
+                document.querySelector('.plans').innerHTML = '';
+
+                // Get plans for the clicked day
+                const plan = plans[index];
+
+                // Display the plan
+                const planDiv = document.createElement('div');
+                planDiv.textContent = `Plan for ${plan.day}: ${plan.plan}`;
+                document.querySelector('.plans').appendChild(planDiv);
+            });
+        });
+    </script>
+</body>
+</html>
